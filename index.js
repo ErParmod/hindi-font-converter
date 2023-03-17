@@ -1,4 +1,3 @@
-// index.js
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -61,9 +60,11 @@ app.post("/api/krutidev-to-unicode", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
+  utils.set_headers(res);
   res.json({
-    message: "This is Unicode2Kruti API",
+    message: "Hindi Font Converter API",
     version: utils.pkg_version,
+    repository: "https://github.com/ErParmod/unicode-font-api",
     developer: "https://github.com/hemant-kr-meena",
   });
 });
