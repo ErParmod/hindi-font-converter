@@ -50,12 +50,14 @@ echo $res->getBody();
 https://hindi-font-converter.vercel.app/
 ```
 
-- ### Params
-  - **format:** return response type (eg: plain,html,json)
-  - **format:** return response type (eg: plain,html,json)
-  -
+### Params:
 
-View the website at: http://localhost:3000
+- **format:** return response type (eg: plain,html,json)
+- **text:** input text that need to be converted
+- **max_chuck_size:** max lenght of chars allowed(default:10000)
+- `format`,`max_chuck_size` can be passed as query paramerts or body parameters
+
+View the website at: http://localhost:4000
 
 ## Security Issues
 
