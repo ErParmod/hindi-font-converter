@@ -1,4 +1,4 @@
-<h1 align="center">Hindi Font Convertor API</h1>
+<h1 align="center">Hindi Font Converter API</h1>
 
 ## Features
 
