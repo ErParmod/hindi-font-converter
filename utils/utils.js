@@ -15,7 +15,7 @@ function parse_body_data(req) {
 
 function set_headers(response, type = "json") {
   // Set response headers
-  if (type === "plain") {
+  if (type === "plain" || type === "text") {
     response.setHeader("Content-Type", "text/plain");
   } else if (type === "html") {
     response.setHeader("Content-Type", "text/html");
