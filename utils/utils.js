@@ -26,11 +26,19 @@ function set_headers(response, type = "json") {
 
 function data_missing(response, generate = true) {
   if (generate) {
-    response.status(400).json({
-      error: true,
-      message: "Required data is missing.",
-    });
+    // response.status(400).json({
+    //   error: true,
+    //   message: "Required data is missing.",
+    // });
+    api_error_response(response, "Required data is missing.", 400);
   }
+}
+
+function api_error_response(res, message = "", code = 500) {
+  res.status(code).json({
+    error: true,
+    message: message,
+  });
 }
 
 function api_success_response(response, format, data, message = "Success") {
@@ -45,6 +53,10 @@ function api_success_response(response, format, data, message = "Success") {
   }
 }
 
+function is_valid_to_font(to_font, allowed_font = "") {
+  return allowed_font.includes(to_font);
+}
+
 function version() {
   return pjson.version;
 }
@@ -56,4 +68,6 @@ module.exports = {
   api_success_response,
   version,
   pjson,
+  api_error_response,
+  is_valid_to_font,
 };
