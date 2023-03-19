@@ -45,7 +45,7 @@ function api_success_response(response, format, data, message = "Success") {
   }
 }
 
-function pkg_version() {
+function version() {
   return pjson.version;
 }
 
@@ -54,6 +54,6 @@ module.exports = {
   set_headers,
   data_missing,
   api_success_response,
-  pkg_version,
+  version,
   pjson,
 };
