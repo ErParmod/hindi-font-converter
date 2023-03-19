@@ -15,7 +15,7 @@ function parse_body_data(req) {
 
 function set_headers(response, type = "json") {
   // Set response headers
-  if (type === "plain") {
+  if (type === "plain" || type === "text") {
     response.setHeader("Content-Type", "text/plain");
   } else if (type === "html") {
     response.setHeader("Content-Type", "text/html");
@@ -26,11 +26,19 @@ function set_headers(response, type = "json") {
 
 function data_missing(response, generate = true) {
   if (generate) {
-    response.status(400).json({
-      error: true,
-      message: "Required data is missing.",
-    });
+    // response.status(400).json({
+    //   error: true,
+    //   message: "Required data is missing.",
+    // });
+    api_error_response(response, "Required data is missing.", 400);
   }
+}
+
+function api_error_response(res, message = "", code = 500) {
+  res.status(code).json({
+    error: true,
+    message: message,
+  });
 }
 
 function api_success_response(response, format, data, message = "Success") {
@@ -45,7 +53,11 @@ function api_success_response(response, format, data, message = "Success") {
   }
 }
 
-function pkg_version() {
+function is_valid_to_font(to_font, allowed_font = "") {
+  return allowed_font.includes(to_font);
+}
+
+function version() {
   return pjson.version;
 }
 
@@ -54,6 +66,8 @@ module.exports = {
   set_headers,
   data_missing,
   api_success_response,
-  pkg_version,
+  version,
   pjson,
+  api_error_response,
+  is_valid_to_font,
 };

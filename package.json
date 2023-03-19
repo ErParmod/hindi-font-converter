@@ -1,10 +1,10 @@
 {
-  "name": "Unicode-to-Kruti",
-  "version": "0.1.0",
-  "description": "Unicode to Kruti Dev 10 API",
+  "name": "hindi-font-converter",
+  "version": "1.0.0",
+  "description": "Hindi-Font-Converter-API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": {
@@ -15,5 +15,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
   }
 }
