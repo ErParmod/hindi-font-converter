@@ -15,7 +15,7 @@ const devs = [
 const aboutInfo = {
   title: "Hindi Font Converter API",
   message: "Hurry! API is working 🥳",
-  repository: "https://github.com/ErParmod/unicode-font-api",
+  repository: "https://github.com/ErParmod/hindi-font-converter",
   developer: devs,
   version: utils.version(),
 };
