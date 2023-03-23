@@ -32,5 +32,39 @@ describe("KrutiDev", () => {
         expect(res.body.data.output_text).toBe(unicode_text);
       });
     });
+
+    describe("POST /api/unicode-to-krutidev", () => {
+      const ApiEndPoint = "unicode-to-krutidev";
+      it("Should Bad Request", async () => {
+        const res = await request(app).post(`/api/${ApiEndPoint}`);
+        expect(res.statusCode).toBe(400);
+        expect(res.body.error).toBe(true);
+      });
+      it("Unicode To Krutidev", async () => {
+        const res = await request(app).post(`/api/${ApiEndPoint}`).send({
+          text: unicode_text,
+        });
+        expect(res.statusCode).toBe(200);
+        expect(res.body.status).toBe(true);
+        expect(res.body.data.output_text).toBe(krutidev_text);
+      });
+    });
+
+    describe("POST /api/krutidev-to-unicode", () => {
+      const ApiEndPoint = "krutidev-to-unicode";
+      it("Should Bad Request", async () => {
+        const res = await request(app).post(`/api/${ApiEndPoint}`);
+        expect(res.statusCode).toBe(400);
+        expect(res.body.error).toBe(true);
+      });
+      it("Unicode To Krutidev", async () => {
+        const res = await request(app).post(`/api/${ApiEndPoint}`).send({
+          text: krutidev_text,
+        });
+        expect(res.statusCode).toBe(200);
+        expect(res.body.status).toBe(true);
+        expect(res.body.data.output_text).toBe(unicode_text);
+      });
+    });
   });
 });
