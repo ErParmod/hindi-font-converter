@@ -21,11 +21,15 @@ const aboutInfo = {
 };
 
 router.get("/", (req, res) => {
-  res.json(aboutInfo);
+  res.status(200).json({
+    alive: true,
+    status: "running...",
+    about: aboutInfo,
+  });
+  // res.json(aboutInfo);
 });
 
 router.get("/about", (req, res) => {
-  utils.set_headers(res);
   res.json(aboutInfo);
 });
 module.exports = router;

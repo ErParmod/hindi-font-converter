@@ -2,9 +2,11 @@
   "name": "hindi-font-converter",
   "version": "1.0.0",
   "description": "Hindi-Font-Converter-API",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "test": "cross-env NODE_ENV=test jest --testTimeout=5000",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": {
@@ -17,6 +19,9 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.21"
+    "cross-env": "^7.0.3",
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.21",
+    "supertest": "^6.3.3"
   }
 }
