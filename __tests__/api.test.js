@@ -68,3 +68,69 @@ describe("KrutiDev", () => {
     });
   });
 });
+
+describe("Chankya", () => {
+  describe("Chankya API Endpoint", () => {
+    describe("POST /api/unicode-chankya", () => {
+      const ApiEndPoint = "unicode-chankya";
+
+      it("Should Bad Request", async () => {
+        const res = await request(app).post(`/api/${ApiEndPoint}`);
+        expect(res.statusCode).toBe(400);
+        expect(res.body.error).toBe(true);
+      });
+      it("Unicode To Chankya", async () => {
+        const res = await request(app).post(`/api/${ApiEndPoint}`).send({
+          text: unicode_text,
+          to_font: "chankya",
+        });
+        expect(res.statusCode).toBe(200);
+        expect(res.body.status).toBe(true);
+        expect(res.body.data.output_text).toBe(chankya_text);
+      });
+      it("Chankya To Unicode", async () => {
+        const res = await request(app).post(`/api/${ApiEndPoint}`).send({
+          text: chankya_text,
+          to_font: "unicode",
+        });
+        expect(res.statusCode).toBe(200);
+        expect(res.body.status).toBe(true);
+        expect(res.body.data.output_text).toBe(unicode_text);
+      });
+    });
+
+    describe("POST /api/unicode-to-chankya", () => {
+      const ApiEndPoint = "unicode-to-chankya";
+      it("Should Bad Request", async () => {
+        const res = await request(app).post(`/api/${ApiEndPoint}`);
+        expect(res.statusCode).toBe(400);
+        expect(res.body.error).toBe(true);
+      });
+      it("Unicode To Chankya", async () => {
+        const res = await request(app).post(`/api/${ApiEndPoint}`).send({
+          text: unicode_text,
+        });
+        expect(res.statusCode).toBe(200);
+        expect(res.body.status).toBe(true);
+        expect(res.body.data.output_text).toBe(chankya_text);
+      });
+    });
+
+    describe("POST /api/chankya-to-unicode", () => {
+      const ApiEndPoint = "chankya-to-unicode";
+      it("Should Bad Request", async () => {
+        const res = await request(app).post(`/api/${ApiEndPoint}`);
+        expect(res.statusCode).toBe(400);
+        expect(res.body.error).toBe(true);
+      });
+      it("Unicode To Chankya", async () => {
+        const res = await request(app).post(`/api/${ApiEndPoint}`).send({
+          text: chankya_text,
+        });
+        expect(res.statusCode).toBe(200);
+        expect(res.body.status).toBe(true);
+        expect(res.body.data.output_text).toBe(unicode_text);
+      });
+    });
+  });
+});
