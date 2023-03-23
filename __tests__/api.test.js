@@ -1,7 +1,36 @@
 const request = require("supertest");
+const app = require("./../app");
 
-describe("Example Test", () => {
-  it("True = True", () => {
-    expect(true).toBe(true);
+const unicode_text = "भारत एक विशाल देश है जो दक्षिण एशिया में स्थित है।";
+const krutidev_text = "Hkkjr ,d fo'kky ns'k gS tks nf{k.k ,f'k;k esa fLFkr gSA";
+const chankya_text = "ÖæÚUÌ °·¤ çßàææÜ Îðàæ ãñ Áô Îçÿæ‡æ °çàæØæ ×ð´ çSÍÌ ãñÐ";
+
+describe("KrutiDev", () => {
+  describe("KrutiDev API Endpoint", () => {
+    describe("POST /api/unicode-krutidev", () => {
+      it("Should Bad Request", async () => {
+        const res = await request(app).post("/api/unicode-krutidev");
+        expect(res.statusCode).toBe(400);
+        expect(res.body.error).toBe(true);
+      });
+      it("Unicode To Krutidev", async () => {
+        const res = await request(app).post("/api/unicode-krutidev").send({
+          text: unicode_text,
+          to_font: "krutidev",
+        });
+        expect(res.statusCode).toBe(200);
+        expect(res.body.status).toBe(true);
+        expect(res.body.data.output_text).toBe(krutidev_text);
+      });
+      it("Krutidev To Unicode", async () => {
+        const res = await request(app).post("/api/unicode-krutidev").send({
+          text: krutidev_text,
+          to_font: "unicode",
+        });
+        expect(res.statusCode).toBe(200);
+        expect(res.body.status).toBe(true);
+        expect(res.body.data.output_text).toBe(unicode_text);
+      });
+    });
   });
 });
