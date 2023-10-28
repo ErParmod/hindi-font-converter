@@ -21,18 +21,22 @@
 The quickest way to get started with api is to utilize the example as shown below:
 ## Endpoints:
 - API Base URL: [https://hindi-font-converter.vercel.app/](https://hindi-font-converter.vercel.app/)
+- When making API calls, make sure to craft your requests using the `POST` method, including the necessary data and parameters as required for each specific endpoint.
+- `/` and `/about` these two endpoint are exception and only accept `GET` method.
+
+  
 ```
 https://hindi-font-converter.vercel.app/
 ```
-|  Endpoint 	              | Parameter |  Response |
+|  Endpoint 	              | METHOD |  Response |
 |---	                      |---	      |---	      |
-|  `/` 	 or `/about`        |    -      | API INFO  |
-|  /api/unicode-krutidev 	  |    -      |   	-     |
-|  /api/unicode-to-krutidev |    -      |   	-     |
-|  /api/krutidev-to-unicode |    -      |   	-     |
-|  /api/unicode-chankya 	  |    -      |   	-     |
-|  /api/unicode-to-chankya 	|    -      |   	-     |
-|  /api/chankya-to-unicode 	|   	-     |   	-     |
+|  `/` 	 or `/about`        |     GET   | API INFO  |
+|  /api/unicode-krutidev 	  |    POST   |   	-     |
+|  /api/unicode-to-krutidev |    POST   |   	-     |
+|  /api/krutidev-to-unicode |    POST   |   	-     |
+|  /api/unicode-chankya 	  |    POST   |   	-     |
+|  /api/unicode-to-chankya 	|    POST   |   	-     |
+|  /api/chankya-to-unicode 	|    POST   |   	-     |
 
 ### Examples:
 
