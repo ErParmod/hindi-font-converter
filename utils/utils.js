@@ -24,15 +24,6 @@ function set_headers(response, type = "json") {
   }
 }
 
-function data_missing(response, generate = true) {
-  if (generate) {
-    // response.status(400).json({
-    //   error: true,
-    //   message: "Required data is missing.",
-    // });
-    api_error_response(response, "Required data is missing.", 400);
-  }
-}
 
 function api_error_response(res, message = "", code = 500) {
   res.status(code).json({
@@ -64,7 +55,6 @@ function version() {
 module.exports = {
   parse_body_data,
   set_headers,
-  data_missing,
   api_success_response,
   version,
   pjson,

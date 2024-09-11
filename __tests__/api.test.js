@@ -9,7 +9,7 @@ describe("KrutiDev", () => {
   describe("KrutiDev API Endpoint", () => {
     describe("POST /api/unicode-krutidev", () => {
       it("Should Bad Request", async () => {
-        const res = await request(app).post("/api/unicode-krutidev");
+        const res = await request(app).post("/api/unicode-krutidev").send({});
         expect(res.statusCode).toBe(400);
         expect(res.body.error).toBe(true);
       });
@@ -36,7 +36,7 @@ describe("KrutiDev", () => {
     describe("POST /api/unicode-to-krutidev", () => {
       const ApiEndPoint = "unicode-to-krutidev";
       it("Should Bad Request", async () => {
-        const res = await request(app).post(`/api/${ApiEndPoint}`);
+        const res = await request(app).post(`/api/${ApiEndPoint}`).send({});
         expect(res.statusCode).toBe(400);
         expect(res.body.error).toBe(true);
       });
@@ -53,7 +53,7 @@ describe("KrutiDev", () => {
     describe("POST /api/krutidev-to-unicode", () => {
       const ApiEndPoint = "krutidev-to-unicode";
       it("Should Bad Request", async () => {
-        const res = await request(app).post(`/api/${ApiEndPoint}`);
+        const res = await request(app).post(`/api/${ApiEndPoint}`).send({});
         expect(res.statusCode).toBe(400);
         expect(res.body.error).toBe(true);
       });
@@ -75,7 +75,7 @@ describe("Chankya", () => {
       const ApiEndPoint = "unicode-chankya";
 
       it("Should Bad Request", async () => {
-        const res = await request(app).post(`/api/${ApiEndPoint}`);
+        const res = await request(app).post(`/api/${ApiEndPoint}`).send({});
         expect(res.statusCode).toBe(400);
         expect(res.body.error).toBe(true);
       });
@@ -102,7 +102,7 @@ describe("Chankya", () => {
     describe("POST /api/unicode-to-chankya", () => {
       const ApiEndPoint = "unicode-to-chankya";
       it("Should Bad Request", async () => {
-        const res = await request(app).post(`/api/${ApiEndPoint}`);
+        const res = await request(app).post(`/api/${ApiEndPoint}`).send({});
         expect(res.statusCode).toBe(400);
         expect(res.body.error).toBe(true);
       });
@@ -119,7 +119,7 @@ describe("Chankya", () => {
     describe("POST /api/chankya-to-unicode", () => {
       const ApiEndPoint = "chankya-to-unicode";
       it("Should Bad Request", async () => {
-        const res = await request(app).post(`/api/${ApiEndPoint}`);
+        const res = await request(app).post(`/api/${ApiEndPoint}`).send({});
         expect(res.statusCode).toBe(400);
         expect(res.body.error).toBe(true);
       });
