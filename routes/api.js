@@ -15,7 +15,11 @@ router.get("/", (req, res) => {
 router.post("/unicode-krutidev", (req, res) => {
   [input_text, raw, format, max_chuck_size] = utils.parse_body_data(req);
   utils.set_headers(res, format);
-  utils.data_missing(res, input_text === "");
+
+  if (input_text === "") {
+    return utils.api_error_response(res, "Required data is missing.", 400);
+  }
+
   const to_font = req.body.to_font ?? "krutidev";
   if (utils.is_valid_to_font(to_font, "unicode-mangal-krutidev") !== true) {
     return utils.api_error_response(
@@ -55,8 +59,12 @@ router.post("/unicode-krutidev", (req, res) => {
 
 router.post("/unicode-to-krutidev", (req, res) => {
   [input_text, raw, format, max_chuck_size] = utils.parse_body_data(req);
+
   utils.set_headers(res, format);
-  utils.data_missing(res, input_text === "");
+
+  if (input_text === "") {
+    return utils.api_error_response(res, "Required data is missing.", 400);
+  }
 
   //process unicode text to krutidev_10 fonts
   const output_text = uni_kruti.unicode_to_krutidev_10(
@@ -80,8 +88,12 @@ router.post("/unicode-to-krutidev", (req, res) => {
 
 router.post("/krutidev-to-unicode", (req, res) => {
   [input_text, raw, format, max_chuck_size] = utils.parse_body_data(req);
-  utils.data_missing(res, input_text === "");
+
   utils.set_headers(res, format);
+
+  if (input_text === "") {
+    return utils.api_error_response(res, "Required data is missing.", 400);
+  }
 
   //process krutidev_10 text to unicode fonts
   const output_text = uni_kruti.kruti_to_unicode(input_text, max_chuck_size);
@@ -107,7 +119,11 @@ router.post("/krutidev-to-unicode", (req, res) => {
 router.post("/unicode-chankya", (req, res) => {
   [input_text, raw, format, max_chuck_size] = utils.parse_body_data(req);
   utils.set_headers(res, format);
-  utils.data_missing(res, input_text === "");
+
+  if (input_text === "") {
+    return utils.api_error_response(res, "Required data is missing.", 400);
+  }
+
   const to_font = req.body.to_font ?? "chankya";
   if (utils.is_valid_to_font(to_font, "unicode-mangal-chankya") !== true) {
     return utils.api_error_response(
@@ -144,8 +160,12 @@ router.post("/unicode-chankya", (req, res) => {
 
 router.post("/unicode-to-chankya", (req, res) => {
   [input_text, raw, format, max_chuck_size] = utils.parse_body_data(req);
-  utils.data_missing(res, input_text === "");
+
   utils.set_headers(res, format);
+
+  if (input_text === "") {
+    return utils.api_error_response(res, "Required data is missing.", 400);
+  }
 
   //process krutidev_10 text to unicode fonts
   const output_text = uni_chankya.unicode_to_chankya(input_text);
@@ -166,8 +186,12 @@ router.post("/unicode-to-chankya", (req, res) => {
 
 router.post("/chankya-to-unicode", (req, res) => {
   [input_text, raw, format, max_chuck_size] = utils.parse_body_data(req);
-  utils.data_missing(res, input_text === "");
+
   utils.set_headers(res, format);
+
+  if (input_text === "") {
+    return utils.api_error_response(res, "Required data is missing.", 400);
+  }
 
   //process krutidev_10 text to unicode fonts
   const output_text = uni_chankya.chanakya_to_unicode(input_text);
