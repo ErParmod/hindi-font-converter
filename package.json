@@ -16,12 +16,12 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.19.2"
+    "express": "^5.0.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
     "jest": "^29.5.0",
-    "nodemon": "^2.0.21",
+    "nodemon": "^3.1.4",
     "supertest": "^6.3.3"
   }
 }
